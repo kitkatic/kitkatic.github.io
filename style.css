@@ -1,0 +1,195 @@
+/* Базовые настройки */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fdf6f0;
+    color: #333;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* Стили для конверта */
+.envelope {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.handwritten {
+    font-family: 'Comic Sans MS', cursive;
+    font-size: 24px;
+}
+
+/* Кнопки */
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px;
+    font-weight: bold;
+}
+#open-btn, .btn-green {
+    background-color: #6ede75;
+    color: white;
+}
+.btn-red {
+    background-color: #f55b6a;
+    color: white;
+}
+
+/* --- Стили для GIF --- */
+.cat-gif {
+    width: 200px; 
+    height: auto;
+    margin-bottom: 20px;
+}
+.cat-gif-small {
+    width: 140px; 
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Стили для подарков */
+/* Стили для подарков */
+.gifts {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.gift-box {
+    width: 110px;
+    height: 110px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: relative;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15), inset -5px -5px 15px rgba(0,0,0,0.1); /* Объем */
+}
+
+/* Ленточки на коробках */
+.gift-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 20px; height: 100%;
+    background: rgba(255, 255, 255, 0.5); /* Полупрозрачная лента */
+}
+
+.gift-box::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0;
+    transform: translateY(-50%);
+    width: 100%; height: 20px;
+    background: rgba(255, 255, 255, 0.5); /* Полупрозрачная лента */
+}
+
+/* Бантик сверху (можно заменить на картинку, но пока сделаем красивый крестик) */
+.gift-box:hover { 
+    transform: scale(1.1) rotate(3deg); 
+}
+
+.gift-box.green { background-color: #6ede75; }
+.gift-box.yellow { background-color: #fce38a; }
+.gift-box.purple { background-color: #c3b1e1; }
+
+/* Галерея (Полароиды) */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+.polaroid {
+    width: 200px;
+    background: white;
+    padding: 10px 10px 40px 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transform: rotate(-3deg);
+    transition: transform 0.3s;
+    object-fit: cover;
+    height: 250px; /* Чтобы фото были одинаковыми по высоте */
+}
+.polaroid:nth-child(even) { transform: rotate(4deg); }
+.polaroid:hover { transform: scale(1.1) rotate(0); z-index: 10; }
+
+/* Письмо */
+.letter {
+    background: #fffdf5;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+/* --- Стили для торта и свечей --- */
+.cake-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.cake-img {
+    width: 250px; 
+    display: block;
+}
+
+.candles {
+    position: absolute;
+    top: 110%; /* Опускаем огоньки вниз на свечки */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65px; /* Сужаем ширину, чтобы они попали на свечки */
+    display: flex;
+    justify-content: space-between;
+}
+
+.flame {
+    width: 12px;
+    height: 20px;
+    background: radial-gradient(circle at 50% 80%, #ffcc00, #ff6600, transparent);
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 15px 5px rgba(255, 102, 0, 0.6);
+    animation: flicker 0.1s infinite alternate; 
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+@keyframes flicker {
+    0% { transform: scale(1) rotate(-2deg); opacity: 0.9; }
+    100% { transform: scale(1.1) rotate(2deg); opacity: 1; }
+}
+
+.flame.extinguished {
+    opacity: 0;
+    transform: scale(0) translateY(-20px); 
+    box-shadow: none;
+}
+
+#final-text h1 {
+    color: #f55b6a;
+    margin-top: 20px;
+}
+
+.hidden { display: none; }
